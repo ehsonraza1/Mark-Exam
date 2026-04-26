@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARK 3337 — Key Terms Exam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #4A2840;
+    --plum-dark: #2E1828;
+    --plum-soft: rgba(74, 40, 64, 0.08);
+    --blush: #F7EFEC;
+    --blush-dark: #ECDFD9;
+    --paper: #FDFAF7;
+    --ink: #1A1418;
+    --ink-soft: #5A4F54;
+    --ink-faint: #8B7E84;
+    --rose: #B85968;
+    --rose-soft: #F5DCDF;
+    --olive: #6B7548;
+    --olive-soft: #E5E8DA;
+    --gold: #B89048;
+    --border: #DDD0CB;
+    --border-soft: rgba(74, 40, 64, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--blush);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(circle at 8% 10%, rgba(74,40,64,0.04) 0, transparent 35%),
+      radial-gradient(circle at 92% 88%, rgba(184,89,104,0.04) 0, transparent 35%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.5s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ====== LANDING ====== */
+  .landing {
+    padding: 70px 0 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .landing-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .landing-meta::before, .landing-meta::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--plum);
+    opacity: 0.35;
+  }
+
+  .greeting {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--rose);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  h1.landing-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(48px, 7vw, 80px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--plum);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  h1.landing-title em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 600;
+  }
+
+  .landing-sub {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--ink-soft);
+    margin-bottom: 50px;
+    font-weight: 400;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+  }
+
+  .exam-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 44px 48px;
+    box-shadow: 0 4px 50px rgba(74,40,64,0.07);
+    position: relative;
+  }
+  .exam-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--plum), var(--rose), var(--gold));
+    border-radius: 3px 3px 0 0;
+  }
+
+  .exam-overview {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .exam-overview strong {
+    color: var(--plum);
+    font-weight: 600;
+  }
+
+  .exam-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+  .stat-cell {
+    background: var(--paper);
+    padding: 18px 14px;
+    text-align: center;
+  }
+  .stat-cell .stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .stat-cell .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--plum);
+    line-height: 1;
+  }
+  .stat-cell .stat-sub {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .chapter-list {
+    margin-bottom: 36px;
+  }
+  .chapter-list-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 14px;
+  }
+  .chapter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 14.5px;
+  }
+  .chapter-row:last-child { border-bottom: none; }
+  .chapter-row .ch-name {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink);
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .chapter-row .ch-name em { color: var(--rose); font-style: italic; font-weight: 600; }
+  .chapter-row .ch-count {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  .start-btn {
+    width: 100%;
+    background: var(--plum);
+    color: var(--blush);
+    border: none;
+    padding: 20px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .start-btn:hover {
+    background: var(--plum-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(74,40,64,0.3);
+  }
+  .start-btn .arrow { margin-left: 12px; transition: transform 0.2s; display: inline-block; }
+  .start-btn:hover .arrow { transform: translateX(4px); }
+
+  .resume-notice {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .resume-notice button {
+    background: none; border: none; color: var(--plum);
+    font-family: inherit; font-size: 15px;
+    text-decoration: underline; cursor: pointer;
+    font-style: italic;
+    margin-left: 6px;
+    font-weight: 500;
+  }
+  .resume-notice button:hover { color: var(--rose); }
+
+  /* ====== EXAM ====== */
+  .exam-header {
+    position: sticky;
+    top: 0;
+    background: var(--blush);
+    z-index: 20;
+    padding: 18px 0 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+  .exam-header-inner {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .exam-title-mini {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--plum);
+    letter-spacing: -0.01em;
+  }
+  .exam-title-mini em { font-style: italic; color: var(--rose); }
+  .progress-wrap {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--blush-dark);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--plum), var(--rose));
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  .progress-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .instructions-bar {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--rose);
+    padding: 16px 20px;
+    margin-bottom: 36px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .instructions-bar strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .question-block {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    border-radius: 3px;
+    transition: border-color 0.2s;
+    scroll-margin-top: 100px;
+  }
+  .question-block.answered {
+    border-left: 3px solid var(--plum);
+  }
+  .question-block.review-correct {
+    border-left: 3px solid var(--olive);
+    background: linear-gradient(to right, var(--olive-soft) 0%, var(--paper) 8%);
+  }
+  .question-block.review-wrong {
+    border-left: 3px solid var(--rose);
+    background: linear-gradient(to right, var(--rose-soft) 0%, var(--paper) 8%);
+  }
+
+  .q-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .q-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--rose);
+    letter-spacing: 0.02em;
+  }
+  .q-chip {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--plum);
+    background: var(--plum-soft);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .q-prompt {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: -0.005em;
+  }
+  .q-text .term-highlight {
+    font-weight: 600;
+    font-style: italic;
+    color: var(--plum);
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .option-btn {
+    text-align: left;
+    padding: 14px 18px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--plum);
+    background: var(--plum-soft);
+  }
+  .option-btn.selected {
+    border-color: var(--plum);
+    background: var(--plum-soft);
+    font-weight: 500;
+  }
+  .option-btn:disabled { cursor: default; }
+
+  .option-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--rose);
+    width: 22px;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+  .option-btn.selected .option-letter { color: var(--plum); }
+
+  .option-btn.review-correct {
+    border-color: var(--olive);
+    background: var(--olive-soft);
+    color: #2F3A1F;
+  }
+  .option-btn.review-correct .option-letter {
+    color: var(--olive);
+  }
+  .option-btn.review-wrong {
+    border-color: var(--rose);
+    background: var(--rose-soft);
+    color: #6B2A33;
+  }
+  .option-btn.review-wrong .option-letter {
+    color: var(--rose);
+  }
+
+  .option-btn.review-correct::after,
+  .option-btn.review-wrong::after {
+    margin-left: auto;
+    font-weight: 700;
+    font-size: 14px;
+    padding-left: 12px;
+  }
+  .option-btn.review-correct::after { content: '✓'; color: var(--olive); }
+  .option-btn.review-wrong::after { content: '✗'; color: var(--rose); }
+
+  .term-reveal {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: var(--blush);
+    border-left: 2px solid var(--gold);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    display: none;
+  }
+  .term-reveal.show { display: block; animation: fadeIn 0.3s ease; }
+  .term-reveal strong {
+    color: var(--plum);
+    font-weight: 600;
+  }
+  .term-reveal .key-term {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--plum);
+    font-weight: 600;
+  }
+
+  /* ====== SUBMIT ====== */
+  .submit-zone {
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .submit-zone .unanswered-warn {
+    font-size: 13.5px;
+    color: var(--rose);
+    margin-bottom: 16px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    display: none;
+  }
+  .submit-zone .unanswered-warn.show { display: block; }
+  .submit-btn {
+    background: var(--rose);
+    color: white;
+    border: none;
+    padding: 18px 48px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .submit-btn:hover:not(:disabled) {
+    background: #A04A58;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(184,89,104,0.3);
+  }
+  .submit-btn:disabled {
+    background: var(--blush-dark);
+    color: var(--ink-faint);
+    cursor: not-allowed;
+  }
+
+  /* ====== RESULTS ====== */
+  .results-header {
+    text-align: center;
+    padding: 60px 0 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .results-meta {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+  }
+  .results-greeting {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .score-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 14vw, 140px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--plum);
+    margin-bottom: 8px;
+  }
+  .score-display .pct-sign {
+    font-size: 0.5em;
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 400;
+  }
+  .score-fraction {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .score-verdict {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .score-verdict em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .chapter-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .bd-ch {
+    background: var(--paper);
+    padding: 18px 16px;
+  }
+  .bd-ch-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .bd-ch-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--plum);
+    margin-bottom: 10px;
+  }
+  .bd-ch-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .bd-ch-score span { color: var(--ink-faint); font-size: 16px; font-weight: 400; }
+  .bd-ch-mini-bar {
+    height: 3px;
+    background: var(--blush-dark);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bd-ch-mini-fill {
+    height: 100%;
+    background: var(--plum);
+    transition: width 0.6s ease;
+  }
+  .bd-ch.score-good .bd-ch-mini-fill { background: var(--olive); }
+  .bd-ch.score-med .bd-ch-mini-fill { background: var(--gold); }
+  .bd-ch.score-low .bd-ch-mini-fill { background: var(--rose); }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .review-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--plum);
+  }
+  .review-header h2 em { font-style: italic; color: var(--rose); }
+
+  .review-filters {
+    display: flex;
+    gap: 8px;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover {
+    border-color: var(--plum);
+    color: var(--plum);
+  }
+  .filter-btn.active {
+    background: var(--plum);
+    color: var(--blush);
+    border-color: var(--plum);
+  }
+
+  .retake-zone {
+    text-align: center;
+    margin: 60px 0 40px;
+    padding: 36px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+  }
+  .retake-zone p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    line-height: 1.4;
+  }
+  .retake-btn {
+    background: var(--plum);
+    color: var(--blush);
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 0 6px;
+  }
+  .retake-btn:hover {
+    background: var(--plum-dark);
+    transform: translateY(-1px);
+  }
+  .retake-btn.secondary {
+    background: transparent;
+    color: var(--plum);
+    border: 1px solid var(--plum);
+  }
+  .retake-btn.secondary:hover {
+    background: var(--plum);
+    color: var(--blush);
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  footer .heart { color: var(--rose); }
+
+  /* ====== STUDY PLAN BLOCK ====== */
+  .study-plan {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 36px 40px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .study-plan::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    border-radius: 3px 3px 0 0;
+  }
+  .study-plan-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .study-plan h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--plum);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .study-plan h3 em { font-style: italic; color: var(--rose); }
+  .study-plan-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-bottom: 32px;
+    line-height: 1.5;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .focus-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+
+  .focus-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 22px;
+    background: var(--blush);
+    border-left: 3px solid var(--rose);
+    border-radius: 2px;
+  }
+  .focus-item.priority-high { border-left-color: var(--rose); background: var(--rose-soft); }
+  .focus-item.priority-med { border-left-color: var(--gold); background: #F7EFDD; }
+  .focus-item.priority-low { border-left-color: var(--olive); background: var(--olive-soft); }
+
+  .focus-rank {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--plum);
+    line-height: 1;
+    min-width: 40px;
+    text-align: center;
+    padding-top: 4px;
+  }
+  .focus-content { flex: 1; }
+  .focus-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .focus-title em { font-style: italic; color: var(--plum); }
+  .focus-stat {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .focus-terms {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .focus-terms strong { color: var(--ink); font-weight: 600; }
+
+  .all-clear {
+    text-align: center;
+    padding: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--olive);
+    background: var(--olive-soft);
+    border-radius: 2px;
+  }
+  .all-clear strong { font-style: normal; font-weight: 600; color: var(--plum); }
+
+  .next-steps {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .next-steps-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .next-steps ol {
+    list-style: none;
+    counter-reset: step-counter;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .next-steps li {
+    counter-increment: step-counter;
+    padding: 12px 0 12px 44px;
+    position: relative;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--border);
+  }
+  .next-steps li:last-child { border-bottom: none; }
+  .next-steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--rose);
+    width: 28px;
+    text-align: center;
+  }
+  .next-steps li strong { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 0 18px; }
+    .exam-card { padding: 30px 22px; }
+    .question-block { padding: 22px 20px; }
+    .exam-stats { grid-template-columns: repeat(2, 1fr); }
+    .chapter-breakdown { grid-template-columns: repeat(2, 1fr); }
+    .review-header { flex-direction: column; align-items: stretch; }
+    .review-filters { justify-content: center; flex-wrap: wrap; }
+    .landing { padding: 40px 0 30px; }
+    .retake-btn { margin: 6px 0; display: block; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ========== LANDING ========== -->
+<section class="view active" id="landing">
+  <div class="landing">
+    <div class="landing-meta">For Maheen</div>
+    <p class="greeting">A little something to help you ace this final.</p>
+    <h1 class="landing-title">Key Terms <em>Exam</em></h1>
+    <p class="landing-sub">Fifty-nine questions covering every key term <em>and</em> the in-class Kahoot review. You got this.</p>
+
+    <div class="exam-card">
+      <p class="exam-overview">
+        This exam tests <strong>every key term from the study guide</strong> across all six chapters — plus all <strong>19 questions from Prof. Boehm's in-class Kahoot review</strong>. Each question gives you a definition, scenario, or example, and you pick the answer that matches. After submitting, you'll see your score, your weakest chapters, and a focused study plan.
+      </p>
+
+      <div class="exam-stats">
+        <div class="stat-cell">
+          <div class="stat-label">Questions</div>
+          <div class="stat-value">59</div>
+          <div class="stat-sub">key terms + Kahoot</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Chapters</div>
+          <div class="stat-value">6</div>
+          <div class="stat-sub">10 through 15</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Time</div>
+          <div class="stat-value">∞</div>
+          <div class="stat-sub">no rush</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Saves</div>
+          <div class="stat-value">Auto</div>
+          <div class="stat-sub">no losing progress</div>
+        </div>
+      </div>
+
+      <div class="chapter-list">
+        <div class="chapter-list-label">Coverage by Chapter</div>
+        <div class="chapter-row"><span class="ch-name">Ch 10 · <em>Approach</em></span><span class="ch-count">10 questions</span></div>
+        <div class="chapter-row"><span class="ch-name">Ch 11 · <em>Need Discovery</em></span><span class="ch-count">9 questions</span></div>
+        <div class="chapter-row"><span class="ch-name">Ch 12 · <em>Presentation</em></span><span class="ch-count">13 questions</span></div>
+        <div class="chapter-row"><span class="ch-name">Ch 13 · <em>Negotiation</em></span><span class="ch-count">10 questions</span></div>
+        <div class="chapter-row"><span class="ch-name">Ch 14 · <em>Close</em></span><span class="ch-count">8 questions</span></div>
+        <div class="chapter-row"><span class="ch-name">Ch 15 · <em>Servicing the Sale</em></span><span class="ch-count">9 questions</span></div>
+      </div>
+
+      <button class="start-btn" onclick="startExam()">Start the Exam<span class="arrow">→</span></button>
+
+      <div class="resume-notice" id="resumeNotice" style="display:none;">
+        Welcome back —
+        <button onclick="resumeExam()">resume where you left off</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXAM ========== -->
+<section class="view" id="exam">
+  <div class="exam-header">
+    <div class="exam-header-inner">
+      <div class="exam-title-mini">Key Terms <em>Exam</em></div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-text"><span id="progressAnswered">0</span> / 59</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="instructions-bar">
+    <strong>Instructions.</strong> Read each definition or scenario carefully and pick the matching key term. You can change your answer anytime before submitting. Your progress saves automatically — close the tab and come back later if you need a break.
+  </div>
+
+  <div id="questionsContainer"></div>
+
+  <div class="submit-zone">
+    <div class="unanswered-warn" id="unansweredWarn"></div>
+    <button class="submit-btn" id="submitBtn" onclick="submitExam()" disabled>Submit Exam</button>
+  </div>
+</section>
+
+<!-- ========== RESULTS ========== -->
+<section class="view" id="results">
+  <div class="results-header">
+    <div class="results-meta">Exam Results · For Maheen</div>
+    <p class="results-greeting" id="resultsGreeting"></p>
+    <div class="score-display"><span id="scorePct">0</span><span class="pct-sign">%</span></div>
+    <div class="score-fraction"><span id="scoreCorrect">0</span> of <span id="scoreTotal">59</span> correct</div>
+    <div class="score-verdict" id="scoreVerdict"></div>
+  </div>
+
+  <div class="chapter-breakdown" id="chapterBreakdown"></div>
+
+  <div id="studyPlanContainer"></div>
+
+  <div class="review-header">
+    <h2>Question <em>Review</em></h2>
+    <div class="review-filters">
+      <button class="filter-btn active" data-filter="all" onclick="filterReview('all')">All 59</button>
+      <button class="filter-btn" data-filter="wrong" onclick="filterReview('wrong')">Wrong only</button>
+      <button class="filter-btn" data-filter="correct" onclick="filterReview('correct')">Correct only</button>
+    </div>
+  </div>
+
+  <div id="reviewContainer"></div>
+
+  <div class="retake-zone">
+    <p>Want to try again? A second pass is where the terms really stick.</p>
+    <button class="retake-btn" onclick="retakeExam()">Retake Exam</button>
+    <button class="retake-btn secondary" onclick="backToLanding()">Back to Start</button>
+  </div>
+</section>
+
+<footer>Made for Maheen <span class="heart">♥</span> Good luck on the final.</footer>
+
+</div>
+
+<script>
+// ============================================================
+// EXAM QUESTIONS — Key Terms Only
+// ============================================================
+const exam = [
+  // ====== CHAPTER 10: APPROACH (7) ======
+  {
+    ch: 10, stepName: "Approach",
+    prompt: "Which key term matches this definition?",
+    q: "A well-conceived plan with three prescriptions: establishing objectives for the sales presentation, developing the presale presentation plan, and renewing one's commitment to providing outstanding customer service.",
+    options: [
+      "Approach",
+      "Presentation strategy",
+      "Action objective",
+      "Six-step presentation plan"
+    ],
+    correct: 1,
+    keyTerm: "Presentation strategy",
+    explain: "The <span class='key-term'>presentation strategy</span> is the master plan with three prescriptions: <strong>establish objectives, develop the presale plan, and recommit to customer service</strong>."
+  },
+  {
+    ch: 10, stepName: "Approach",
+    prompt: "Pick the term that fits this scenario.",
+    q: "Before her first sales call with a new client, Maheen researches the company, sets her objectives for the meeting, and writes out a plan for what she'll cover. This work she's doing <em>before</em> the call is called the…",
+    options: [
+      "Approach",
+      "Preapproach",
+      "Action objective",
+      "Elevator speech"
+    ],
+    correct: 1,
+    keyTerm: "Preapproach",
+    explain: "The <span class='key-term'>preapproach</span> is everything you do <em>before</em> the actual call — preparing presale objectives and developing a presale presentation plan."
+  },
+  {
+    ch: 10, stepName: "Approach",
+    prompt: "Which term matches this definition?",
+    q: "The second part of the presentation strategy — making a favorable first impression, securing the prospect's attention, and transitioning to need identification.",
+    options: [
+      "Preapproach",
+      "Approach",
+      "Six-step presentation plan",
+      "Action objective"
+    ],
+    correct: 1,
+    keyTerm: "Approach",
+    explain: "The <span class='key-term'>approach</span> is the actual opening of the call. Three objectives: <strong>build rapport, capture attention, generate interest</strong>."
+  },
+  {
+    ch: 10, stepName: "Approach",
+    prompt: "Pick the matching term.",
+    q: "Something the salesperson wants the customer to <em>do</em> during the sales presentation — provide financial info, schedule a plant visit, agree to a trial, agree to a follow-up, or place an order.",
+    options: [
+      "Buying condition",
+      "Action objective",
+      "Closing clue",
+      "Trial close"
+    ],
+    correct: 1,
+    keyTerm: "Action objective",
+    explain: "An <span class='key-term'>action objective</span> brings sharp focus to a presentation by specifying what you want the customer to <em>do</em>, not just learn about."
+  },
+  {
+    ch: 10, stepName: "Approach",
+    prompt: "Which key term is being described?",
+    q: "A short, focused message that emphasizes the benefit of working with the salesperson — used to open the door and establish credibility. It's about offering to take excellent care of the prospect.",
+    options: [
+      "Action objective",
+      "Elevator speech",
+      "Customer benefit approach",
+      "Premium approach"
+    ],
+    correct: 1,
+    keyTerm: "Elevator speech",
+    explain: "An <span class='key-term'>elevator speech</span> is your quick value pitch — focused on the benefit of working with <em>you</em>, not a list of product features."
+  },
+  {
+    ch: 10, stepName: "Approach",
+    prompt: "Match the scenario to the term.",
+    q: "Ahmed is a new sales rep who feels anxious every time he picks up the phone. He keeps finding reasons to avoid making cold calls — checking emails, reorganizing his desk, anything but dialing. This pattern of thoughts and behaviors is called…",
+    options: [
+      "Buyer hesitation",
+      "Sales call reluctance",
+      "Closing anxiety",
+      "Approach avoidance"
+    ],
+    correct: 1,
+    keyTerm: "Sales call reluctance",
+    explain: "<span class='key-term'>Sales call reluctance</span> is the salesperson's internal mental block — anxiety, self-doubt, avoidance — that limits what they accomplish. It's a salesperson problem, not a customer one."
+  },
+  {
+    ch: 10, stepName: "Approach",
+    prompt: "Which term refers to the following plan?",
+    q: "The presales plan developed after careful study of these six steps: approach, need discovery, presentation, negotiation, close, and servicing the sale.",
+    options: [
+      "Presentation strategy",
+      "Six-step presentation plan",
+      "Preapproach",
+      "Consultative process"
+    ],
+    correct: 1,
+    keyTerm: "Six-step presentation plan",
+    explain: "The <span class='key-term'>six-step presentation plan</span> is the full framework: <strong>Approach → Need Discovery → Presentation → Negotiation → Close → Service</strong>. Memorize this order."
+  },
+
+  // ====== CHAPTER 11: NEED DISCOVERY (7) ======
+  {
+    ch: 11, stepName: "Need Discovery",
+    prompt: "Pick the matching term.",
+    q: "The process of diagnosing customer problems — forms the essence of being able to create value, meet customer needs, and execute the firm's commitment to the marketing concept.",
+    options: [
+      "Active listening",
+      "Need discovery",
+      "Buying conditions",
+      "SPIN selling"
+    ],
+    correct: 1,
+    keyTerm: "Need discovery",
+    explain: "<span class='key-term'>Need discovery</span> is the diagnostic phase — the highest-impact step of the sales process per Rackham's research. Master this and you create real value."
+  },
+  {
+    ch: 11, stepName: "Need Discovery",
+    prompt: "Which term is being described?",
+    q: "Also called \"information-gathering questions.\" Designed to collect basic facts about the buyer's existing situation and problem.",
+    options: [
+      "Probing questions",
+      "Survey questions",
+      "Confirmation questions",
+      "Need-satisfaction questions"
+    ],
+    correct: 1,
+    keyTerm: "Survey questions",
+    explain: "<span class='key-term'>Survey questions</span> collect baseline facts. They're often the first questions you ask — \"Tell me about your current setup\" — and they come in general and specific flavors."
+  },
+  {
+    ch: 11, stepName: "Need Discovery",
+    prompt: "Match the term.",
+    q: "Questions that help the salesperson uncover and clarify the pain, implications, and circumstances surrounding the customer's buying problem.",
+    options: [
+      "Survey questions",
+      "Probing questions",
+      "Confirmation questions",
+      "Closed questions"
+    ],
+    correct: 1,
+    keyTerm: "Probing questions",
+    explain: "<span class='key-term'>Probing questions</span> dig deeper — once survey questions reveal the surface, probing questions explore the pain underneath. \"What's the impact of that problem on your team?\""
+  },
+  {
+    ch: 11, stepName: "Need Discovery",
+    prompt: "Which term matches this scenario?",
+    q: "Maheen tells the customer: \"So if I'm understanding correctly, you need delivery within two weeks AND you need financing options — is that right?\" She's using which type of question?",
+    options: [
+      "Survey questions",
+      "Probing questions",
+      "Confirmation questions",
+      "Need-satisfaction questions"
+    ],
+    correct: 2,
+    keyTerm: "Confirmation questions",
+    explain: "<span class='key-term'>Confirmation questions</span> verify accuracy and ensure mutual understanding. They sound like \"so you're saying…\" or \"let me make sure I have this right.\""
+  },
+  {
+    ch: 11, stepName: "Need Discovery",
+    prompt: "Pick the matching term.",
+    q: "Qualifications that must be available or fulfilled before the sale can be closed — like specific delivery dates, installation requirements, or credit terms.",
+    options: [
+      "Action objectives",
+      "Buying conditions",
+      "Buying motives",
+      "Need-satisfaction conditions"
+    ],
+    correct: 1,
+    keyTerm: "Buying conditions",
+    explain: "<span class='key-term'>Buying conditions</span> are the must-haves. Surface them early — a sale literally cannot close if a single buying condition isn't met."
+  },
+  {
+    ch: 11, stepName: "Need Discovery",
+    prompt: "Which key term is this?",
+    q: "The process of sending back to the prospect what you as a listener think the person meant — both in terms of content and feelings. Includes paraphrasing, focused attention, and taking notes.",
+    options: [
+      "Probing",
+      "Active listening",
+      "Need discovery",
+      "Confirmation"
+    ],
+    correct: 1,
+    keyTerm: "Active listening",
+    explain: "<span class='key-term'>Active listening</span> isn't passive — paraphrasing back is the core tactic. It tells the customer you're hearing them, not just waiting for your turn to talk."
+  },
+  {
+    ch: 11, stepName: "Need Discovery",
+    prompt: "Match the term to this scenario.",
+    q: "Maheen asks: \"If I could find a solution that delivers in two weeks AND comes with financing — would that work for you?\" This is a question designed to move the sale toward commitment. It's a…",
+    options: [
+      "Survey question",
+      "Probing question",
+      "Confirmation question",
+      "Need-satisfaction question"
+    ],
+    correct: 3,
+    keyTerm: "Need-satisfaction questions",
+    explain: "<span class='key-term'>Need-satisfaction questions</span> focus on the solution and its benefits — they move the sale toward commitment and action. \"If I could solve X, would you…?\""
+  },
+
+  // ====== CHAPTER 12: PRESENTATION (7) ======
+  {
+    ch: 12, stepName: "Presentation",
+    prompt: "Pick the matching term.",
+    q: "A type of presentation that emphasizes factual information often taken from technical reports, company-prepared sales literature, or written testimonials from people who have used the product.",
+    options: [
+      "Persuasive presentation",
+      "Reminder presentation",
+      "Informative presentation",
+      "Reinforcement presentation"
+    ],
+    correct: 2,
+    keyTerm: "Informative presentation",
+    explain: "An <span class='key-term'>informative presentation</span> is fact-driven — reports, testimonials, technical specs. You're laying out the facts so the buyer can make an informed decision."
+  },
+  {
+    ch: 12, stepName: "Presentation",
+    prompt: "Which key term matches?",
+    q: "The major goal of this type of presentation is to influence the prospect's beliefs, attitudes, or behavior — and to encourage buyer action. It includes a subtle transition where dialogue shifts from intellectual emphasis to emotional appeal.",
+    options: [
+      "Informative presentation",
+      "Persuasive presentation",
+      "Reminder presentation",
+      "Consultative presentation"
+    ],
+    correct: 1,
+    keyTerm: "Persuasive presentation",
+    explain: "A <span class='key-term'>persuasive presentation</span> moves from logic to feeling. The goal isn't just informing — it's getting the buyer to <em>act</em>."
+  },
+  {
+    ch: 12, stepName: "Presentation",
+    prompt: "Match the term.",
+    q: "Sometimes called \"reinforcement presentations.\" Help maintain market share, ongoing awareness, and familiarity with product lines — typically used with existing customers.",
+    options: [
+      "Informative presentations",
+      "Persuasive presentations",
+      "Reminder presentations",
+      "Follow-up presentations"
+    ],
+    correct: 2,
+    keyTerm: "Reminder presentations",
+    explain: "<span class='key-term'>Reminder presentations</span> are for existing customers — keeping you top of mind so they don't drift to competitors."
+  },
+  {
+    ch: 12, stepName: "Presentation",
+    prompt: "Which term fits this scenario?",
+    q: "Ahmed is showing the prospect a written testimonial from a happy customer, a chart of performance data, and a third-party safety certification. What is he using?",
+    options: [
+      "Emotional links",
+      "Proof devices",
+      "Cost-benefit analysis",
+      "Buying motives"
+    ],
+    correct: 1,
+    keyTerm: "Proof devices",
+    explain: "<span class='key-term'>Proof devices</span> back up your claims with evidence — statements, reports, testimonials, customer data, photographs. Anything that proves what you're saying is real."
+  },
+  {
+    ch: 12, stepName: "Presentation",
+    prompt: "Pick the matching term.",
+    q: "A way to quantify a solution that involves listing the costs to the buyer and the savings or value to be achieved from the purchase of the product.",
+    options: [
+      "Return on investment",
+      "Cost-benefit analysis",
+      "Proof device",
+      "Quantification model"
+    ],
+    correct: 1,
+    keyTerm: "Cost-benefit analysis",
+    explain: "<span class='key-term'>Cost-benefit analysis</span> lists costs against benefits broadly — money, time, quality, convenience. ROI is similar but money-specific."
+  },
+  {
+    ch: 12, stepName: "Presentation",
+    prompt: "Match the term to this calculation.",
+    q: "A company spends $10,000 on training. As a result, productivity gains save them $40,000 over the next year. The 300% figure they calculate to express the value of the investment is called the…",
+    options: [
+      "Cost-benefit ratio",
+      "Profit margin",
+      "Return on investment",
+      "Value proposition"
+    ],
+    correct: 2,
+    keyTerm: "Return on investment",
+    explain: "<span class='key-term'>Return on investment (ROI)</span> is the net profit/savings expressed as a percentage of the original investment. It's the precise money-in, money-out calculation."
+  },
+  {
+    ch: 12, stepName: "Presentation",
+    prompt: "Which key term is being described?",
+    q: "The connectors between messages and the internal emotions of the prospect — used in persuasive presentations to build feelings like confidence, security, or pride.",
+    options: [
+      "Buying motives",
+      "Emotional links",
+      "Cost-benefit analysis",
+      "Proof devices"
+    ],
+    correct: 1,
+    keyTerm: "Emotional links",
+    explain: "<span class='key-term'>Emotional links</span> tie your message to how the buyer wants to <em>feel</em>. Even a logical, data-driven buyer responds to emotions like confidence, relief, and pride."
+  },
+
+  // ====== CHAPTER 13: NEGOTIATION (7) ======
+  {
+    ch: 13, stepName: "Negotiation",
+    prompt: "Pick the matching term.",
+    q: "The process of seeking to move polarized parties into the realm of common interests.",
+    options: [
+      "Closing",
+      "Negotiation",
+      "Confirmation",
+      "Adaptive selling"
+    ],
+    correct: 1,
+    keyTerm: "Negotiation",
+    explain: "<span class='key-term'>Negotiation</span> isn't about winning — it's about finding common interest where both sides walk away with something."
+  },
+  {
+    ch: 13, stepName: "Negotiation",
+    prompt: "Which term matches this acronym?",
+    q: "BATNA stands for…",
+    options: [
+      "Best Approach To Negotiate Agreement",
+      "Best Alternative To Negotiated Agreement",
+      "Buyer's Authority To Negotiate Anything",
+      "Basic Approach To New Accounts"
+    ],
+    correct: 1,
+    keyTerm: "BATNA",
+    explain: "<span class='key-term'>BATNA = Best Alternative To Negotiated Agreement</span>. It's your fallback if the deal falls through. Knowing your BATNA gives you real leverage."
+  },
+  {
+    ch: 13, stepName: "Negotiation",
+    prompt: "Match the term to this approach.",
+    q: "The buyer says \"your product breaks after a year.\" The salesperson responds, \"That's not accurate — our product is rated for five years and we have data to prove it.\" This is a high-risk method called…",
+    options: [
+      "Indirect denial",
+      "Direct denial",
+      "Superior benefit",
+      "Postpone method"
+    ],
+    correct: 1,
+    keyTerm: "Direct denial",
+    explain: "<span class='key-term'>Direct denial</span> refutes the buyer's belief outright. It's high-risk because it can feel like an attack — use only when you're sure of your facts and the relationship can take it."
+  },
+  {
+    ch: 13, stepName: "Negotiation",
+    prompt: "Which term fits this approach?",
+    q: "The buyer raises a valid concern. The salesperson says, \"I understand why you'd think that — and there's some truth to it. Let me explain how we've addressed that specifically…\" This softer method is called…",
+    options: [
+      "Direct denial",
+      "Indirect denial",
+      "Trial offer",
+      "Demonstration"
+    ],
+    correct: 1,
+    keyTerm: "Indirect denial",
+    explain: "<span class='key-term'>Indirect denial</span> acknowledges the concern's validity before correcting it. It preserves the relationship while still addressing the objection."
+  },
+  {
+    ch: 13, stepName: "Negotiation",
+    prompt: "Match the term.",
+    q: "A benefit that, in most cases, outweighs the customer's specific concern. The salesperson uses it to redirect attention from the objection to a stronger advantage.",
+    options: [
+      "Premium offer",
+      "Superior benefit",
+      "Closing benefit",
+      "Trial offer"
+    ],
+    correct: 1,
+    keyTerm: "Superior benefit",
+    explain: "<span class='key-term'>Superior benefit</span> = bigger benefit beats the objection. \"Yes, it costs more, but it lasts twice as long\" — the durability outweighs the price concern."
+  },
+  {
+    ch: 13, stepName: "Negotiation",
+    prompt: "Pick the matching term.",
+    q: "A method that involves giving the prospect an opportunity to try the product without making a purchase commitment.",
+    options: [
+      "Demonstration",
+      "Trial offer",
+      "Trial close",
+      "Premium approach"
+    ],
+    correct: 1,
+    keyTerm: "Trial offer",
+    explain: "<span class='key-term'>Trial offer</span> = let them try before they buy. Removes risk, lets the product sell itself. Different from a trial <em>close</em>."
+  },
+  {
+    ch: 13, stepName: "Negotiation",
+    prompt: "Which term matches this scenario?",
+    q: "A buyer says \"$1,000 is too expensive for the bundle.\" The salesperson removes the warranty and accessories, bringing the price down to $700 for just the core product. This price-reduction strategy is called…",
+    options: [
+      "Discounting",
+      "Concession close",
+      "Unbundling",
+      "Trial offer"
+    ],
+    correct: 2,
+    keyTerm: "Unbundling",
+    explain: "<span class='key-term'>Unbundling</span> reduces price by stripping items out, not by cutting unit price. Protects margin on what stays in the deal."
+  },
+
+  // ====== CHAPTER 14: CLOSE (7) ======
+  {
+    ch: 14, stepName: "Close",
+    prompt: "Pick the matching term.",
+    q: "When working on a large, complex sale, you should try to achieve some form of this throughout the sales process — at every step in a multi-call presentation.",
+    options: [
+      "Closing clue",
+      "Incremental commitment",
+      "Trial close",
+      "Confirmation step"
+    ],
+    correct: 1,
+    keyTerm: "Incremental commitment",
+    explain: "<span class='key-term'>Incremental commitment</span> = small \"yeses\" that add up to the big yes. Each step in a complex sale should secure some form of forward progress."
+  },
+  {
+    ch: 14, stepName: "Close",
+    prompt: "Which term is this?",
+    q: "An indication, either verbal or nonverbal, that the prospect is preparing to make a buying decision — like asking about delivery dates or shifting from \"if\" to \"when.\"",
+    options: [
+      "Trial close",
+      "Closing clue",
+      "Buying motive",
+      "Need-satisfaction signal"
+    ],
+    correct: 1,
+    keyTerm: "Closing clue",
+    explain: "<span class='key-term'>Closing clues</span> are the green lights — verbal cues, body language shifts, questions about details. Spot them and close at the right moment."
+  },
+  {
+    ch: 14, stepName: "Close",
+    prompt: "Match the scenario to the term.",
+    q: "Maheen has been presenting to a client. Mid-presentation, she asks: \"Would you prefer the blue model or the green one?\" — a small question that assumes the buyer is moving forward. This early-test technique is called a…",
+    options: [
+      "Trial close",
+      "Direct appeal close",
+      "Assumptive close",
+      "Closing clue"
+    ],
+    correct: 0,
+    keyTerm: "Trial close",
+    explain: "<span class='key-term'>Trial close</span> (also called the minor point close) tests readiness mid-presentation. If they answer, they're moving forward. If they hesitate, more work to do."
+  },
+  {
+    ch: 14, stepName: "Close",
+    prompt: "Pick the matching close.",
+    q: "The salesperson simply says, \"Are you ready to place the order today?\" — straightforward, clear, no fancy maneuvering.",
+    options: [
+      "Trial close",
+      "Direct appeal close",
+      "Assumptive close",
+      "Special concession close"
+    ],
+    correct: 1,
+    keyTerm: "Direct appeal close",
+    explain: "<span class='key-term'>Direct appeal close</span> = just ask. Its advantages are clarity and simplicity. Best when buying signals are strong and you've earned the right to ask."
+  },
+  {
+    ch: 14, stepName: "Close",
+    prompt: "Which close is being described?",
+    q: "Asks for a minor decision — like delivery date, color, or quantity — assuming the customer has already decided to buy. Also called the \"take-it-for-granted\" close.",
+    options: [
+      "Direct appeal close",
+      "Trial close",
+      "Assumptive close",
+      "Multiple-options close"
+    ],
+    correct: 2,
+    keyTerm: "Assumptive close",
+    explain: "<span class='key-term'>Assumptive close</span> bypasses the yes/no decision by asking a smaller question that assumes the bigger yes. \"What address should we ship to?\""
+  },
+  {
+    ch: 14, stepName: "Close",
+    prompt: "Match the term.",
+    q: "The salesperson allows the customer to examine several different options and tries to assess the degree of interest in each one — \"Would you go with Option A, Option B, or Option C?\"",
+    options: [
+      "Multiple-options close",
+      "Balance sheet close",
+      "Special concession close",
+      "Summary-of-benefits close"
+    ],
+    correct: 0,
+    keyTerm: "Multiple-options close",
+    explain: "<span class='key-term'>Multiple-options close</span> reframes the question from \"whether\" to \"which.\" The buyer's already past deciding to buy — they're just picking which version."
+  },
+  {
+    ch: 14, stepName: "Close",
+    prompt: "Pick the matching close.",
+    q: "Used when the customer is having difficulty making a decision despite having plenty of information. The salesperson walks them through a side-by-side weighing of pros and cons.",
+    options: [
+      "Summary-of-benefits close",
+      "Balance sheet close",
+      "Impending event close",
+      "Management close"
+    ],
+    correct: 1,
+    keyTerm: "Balance sheet close",
+    explain: "<span class='key-term'>Balance sheet close</span> is for the paralyzed buyer. You map pros and cons together — usually the pro side wins, and seeing it laid out breaks the freeze."
+  },
+
+  // ====== CHAPTER 15: SERVICING THE SALE (5) ======
+  {
+    ch: 15, stepName: "Servicing",
+    prompt: "Pick the matching term.",
+    q: "Encompasses all activities that enhance or facilitate the sale and use of one's product or service — including delivery, installation, follow-up calls, and post-sale follow-through.",
+    options: [
+      "Customer success",
+      "Customer service",
+      "Value reinforcement",
+      "Full-line selling"
+    ],
+    correct: 1,
+    keyTerm: "Customer service",
+    explain: "<span class='key-term'>Customer service</span> covers every activity that supports the sale and product use after the close. It's the #1 driver of repeat business — and the #1 cause of churn when neglected."
+  },
+  {
+    ch: 15, stepName: "Servicing",
+    prompt: "Match the term.",
+    q: "The practice of getting credit for the value you create for the customer — making sure they recognize and appreciate what you've done for them.",
+    options: [
+      "Customer service",
+      "Value reinforcement",
+      "Cross-selling",
+      "Follow-through"
+    ],
+    correct: 1,
+    keyTerm: "Value reinforcement",
+    explain: "<span class='key-term'>Value reinforcement</span> = making sure the customer sees and remembers the value you delivered. Otherwise they take it for granted and you lose the credit."
+  },
+  {
+    ch: 15, stepName: "Servicing",
+    prompt: "Pick the matching scenario.",
+    q: "A form that serves as a communications link with people who can assist with customer service — internal teams like delivery, credit, and logistics use it to coordinate.",
+    options: [
+      "Sales report",
+      "Call report",
+      "Service ticket",
+      "Customer record"
+    ],
+    correct: 1,
+    keyTerm: "Call report",
+    explain: "<span class='key-term'>Call report</span> = internal coordination doc. It keeps your team aligned so the customer doesn't have to chase three different departments."
+  },
+  {
+    ch: 15, stepName: "Servicing",
+    prompt: "Which term fits this scenario?",
+    q: "A customer buys a laptop. The salesperson then suggests they also pick up a laptop bag, mouse, and screen protector — items related to the main purchase. This is called…",
+    options: [
+      "Cross-selling",
+      "Upselling",
+      "Full-line selling",
+      "Value reinforcement"
+    ],
+    correct: 2,
+    keyTerm: "Full-line selling",
+    explain: "<span class='key-term'>Full-line selling</span> (a.k.a. suggestion selling) = adding related items to the main purchase. The bag, mouse, and screen protector all relate to the laptop."
+  },
+  {
+    ch: 15, stepName: "Servicing",
+    prompt: "Match the term.",
+    q: "A customer buys a basic laptop. The salesperson encourages them to upgrade to the premium model with more memory, better display, and longer battery life — better quality, higher value.",
+    options: [
+      "Cross-selling",
+      "Upselling",
+      "Full-line selling",
+      "Premium approach"
+    ],
+    correct: 1,
+    keyTerm: "Upselling",
+    explain: "<span class='key-term'>Upselling</span> = better-quality version of the same thing. Cross-selling = unrelated items. Full-line = related items. Three different terms — make sure you can tell them apart."
+  },
+
+  // ====== KAHOOT REVIEW QUESTIONS (19) — from Prof. Boehm's in-class review ======
+  {
+    ch: 10, stepName: "Approach", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "Select the 6-Step Presentation Plan in the correct order.",
+    options: [
+      "Approach, Presentation, Needs Identification, Negotiation, Close, Service",
+      "Needs Identification, Approach, Presentation, Negotiation, Close, Service",
+      "Approach, Needs Identification, Presentation, Negotiation, Close, Service",
+      "Approach, Needs Identification, Presentation, Negotiation, Service, Close"
+    ],
+    correct: 2,
+    keyTerm: "Six-step presentation plan",
+    explain: "<strong>Approach → Needs Identification → Presentation → Negotiation → Close → Service.</strong> You always close <em>before</em> servicing — you can't service a deal that hasn't been closed."
+  },
+  {
+    ch: 10, stepName: "Approach", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "Which of the following is NOT an objective for the Approach?",
+    options: [
+      "Address buyer concerns with your product",
+      "Build rapport",
+      "Capture the buyer's attention",
+      "Transition to next stage"
+    ],
+    correct: 0,
+    keyTerm: "Approach",
+    explain: "The three Approach objectives: <strong>rapport, attention, and interest (transition)</strong>. Addressing concerns happens later in <em>Negotiation</em> (Ch 13)."
+  },
+  {
+    ch: 11, stepName: "Need Discovery", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "SPIN Selling is a questioning strategy used during which step of the 6-Step Presentation Plan?",
+    options: [
+      "Approach",
+      "Needs Identification",
+      "Presentation",
+      "Negotiation"
+    ],
+    correct: 1,
+    keyTerm: "SPIN Selling",
+    explain: "<strong>SPIN = Situation, Problem, Implication, Need-payoff.</strong> All four are <em>discovery</em> question types — they belong in Needs Identification (Ch 11)."
+  },
+  {
+    ch: 11, stepName: "Need Discovery", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "Focusing your full attention, paraphrasing the customer's words, and taking notes are all ways to practice…",
+    options: [
+      "Product presentation",
+      "Upselling",
+      "Negotiation",
+      "Active listening"
+    ],
+    correct: 3,
+    keyTerm: "Active listening",
+    explain: "<span class='key-term'>Active listening</span> = sending back to the prospect what you think they meant. <strong>Paraphrasing is the core tactic.</strong>"
+  },
+  {
+    ch: 15, stepName: "Servicing", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "Scheduling deliveries, monitoring installation, and offering product training are examples of ways to…",
+    options: [
+      "Negotiate",
+      "Establish rapport",
+      "Follow-through",
+      "Discover needs"
+    ],
+    correct: 2,
+    keyTerm: "Follow-through",
+    explain: "These are all post-sale activities that <strong>add value with follow-through</strong>. They happen after the close — that's how you service the sale and earn repeat business."
+  },
+  {
+    ch: 10, stepName: "Approach", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "What is the 3×3 Matrix concept?",
+    options: [
+      "Ask 3 Situation questions and 3 Problem questions",
+      "Develop at least 3 relationships across 3 levels within an organization",
+      "After purchase, send 3 follow-up messages, 3 weeks apart",
+      "People draw 3 conclusions about you in the first 3 seconds they meet you"
+    ],
+    correct: 1,
+    keyTerm: "3×3 Matrix",
+    explain: "The <span class='key-term'>3×3 Matrix</span> = cultivate at least three contacts across three levels (e.g., end-user, manager, executive). If one person leaves, the account doesn't walk with them."
+  },
+  {
+    ch: 12, stepName: "Presentation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "Features and Benefits are demonstrated in what step of the 6-Step Presentation Plan?",
+    options: [
+      "Approach",
+      "Needs Identification",
+      "Presentation",
+      "Negotiation"
+    ],
+    correct: 2,
+    keyTerm: "Presentation",
+    explain: "<strong>Presentation</strong> (Ch 12) is where features become benefits. Need Discovery surfaced the need; Presentation shows how the product meets it."
+  },
+  {
+    ch: 12, stepName: "Presentation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "\"The laptop has 16GB of RAM.\" The following depicts a…",
+    options: [
+      "Feature",
+      "Benefit"
+    ],
+    correct: 0,
+    keyTerm: "Feature",
+    explain: "A <span class='key-term'>feature</span> = what the product <em>is</em> or <em>has</em>. The benefit would be \"you can run multiple apps without slowdown.\""
+  },
+  {
+    ch: 12, stepName: "Presentation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "\"You'll save $500 a year on fuel costs.\" The following depicts a…",
+    options: [
+      "Feature",
+      "Benefit"
+    ],
+    correct: 1,
+    keyTerm: "Benefit",
+    explain: "A <span class='key-term'>benefit</span> = what the feature <em>does for the customer</em>. Features are specs; benefits are outcomes the customer experiences."
+  },
+  {
+    ch: 12, stepName: "Presentation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "True or False: You should create one written sales proposal that you share with all of your prospects.",
+    options: [
+      "True",
+      "False"
+    ],
+    correct: 1,
+    keyTerm: "Sales proposal",
+    explain: "<strong>Custom-fit every proposal</strong>. A one-size-fits-all proposal signals you didn't listen — and kills adaptive selling."
+  },
+  {
+    ch: 12, stepName: "Presentation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "How might you quantify the value of your solution to your customer?",
+    options: [
+      "Ask SPIN questions",
+      "Explain features",
+      "Actively listen",
+      "Use a cost-benefit analysis"
+    ],
+    correct: 3,
+    keyTerm: "Cost-benefit analysis",
+    explain: "A <span class='key-term'>cost-benefit analysis</span> puts <em>numbers</em> on the value — costs vs. savings. SPIN and listening are for discovery, not quantification."
+  },
+  {
+    ch: 12, stepName: "Presentation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "Which of the following is a way to involve the buyer in your product presentation?",
+    options: [
+      "Tell them about features",
+      "Ask them questions",
+      "Show them photos of the product",
+      "Tell them about benefits"
+    ],
+    correct: 1,
+    keyTerm: "Buyer involvement",
+    explain: "<strong>Asking questions</strong> is the only option that actively <em>involves</em> the buyer. The others are one-way delivery. Engaged buyers retain more and buy more."
+  },
+  {
+    ch: 13, stepName: "Negotiation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "\"Your price is too high\" or \"I need to talk to my boss\" are examples of…",
+    options: [
+      "Closes",
+      "Objections",
+      "Features",
+      "Buyer needs"
+    ],
+    correct: 1,
+    keyTerm: "Objections",
+    explain: "Classic <span class='key-term'>buyer objections</span> — resistance during or after the presentation. Remember: objections are requests for more information, not rejection."
+  },
+  {
+    ch: 13, stepName: "Negotiation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "What is the most common buyer objection?",
+    options: [
+      "Price",
+      "Source",
+      "Time",
+      "No need"
+    ],
+    correct: 0,
+    keyTerm: "Price objection",
+    explain: "<strong>Price</strong> is the most frequent objection. Handle it by adding value — don't apologize. Point out the price/quality relationship and the difference between price and cost."
+  },
+  {
+    ch: 13, stepName: "Negotiation", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "True or False: You should apologize if your buyer says your price is too high.",
+    options: [
+      "True",
+      "False"
+    ],
+    correct: 1,
+    keyTerm: "Price objection",
+    explain: "<strong>Never apologize for your price</strong> — it signals you don't believe in your own value. Reframe around value, quality, and total cost of ownership."
+  },
+  {
+    ch: 15, stepName: "Servicing", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "If a customer is unhappy with a late delivery, you should do all of the following EXCEPT:",
+    options: [
+      "Let them disclose their feelings",
+      "Share the problem's cause",
+      "Blame your logistics department",
+      "Decide how to best remedy the problem"
+    ],
+    correct: 2,
+    keyTerm: "Partnering with unhappy customers",
+    explain: "<strong>Never alibi or blame another department</strong>. Let them vent, acknowledge the cause, focus on the remedy. You own the relationship — not the excuse."
+  },
+  {
+    ch: 14, stepName: "Close", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "\"Would you like to go with Option A or Option B?\" is an example of a…",
+    options: [
+      "Direct appeal close",
+      "Trial close",
+      "Special concession close",
+      "Multiple-options close"
+    ],
+    correct: 3,
+    keyTerm: "Multiple-options close",
+    explain: "The <span class='key-term'>multiple-options close</span> presents two or more choices and reframes \"whether\" into \"which.\" The buyer's already past deciding to buy."
+  },
+  {
+    ch: 15, stepName: "Servicing", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "What is the #1 cause of customer attrition/churn?",
+    options: [
+      "Price",
+      "Poor service",
+      "Product dissatisfaction",
+      "Competitors"
+    ],
+    correct: 1,
+    keyTerm: "Customer service",
+    explain: "<strong>Poor service drives 50–70% of customer attrition</strong> — more than price, product, and competitors combined. That's why servicing the sale is the highest-leverage step."
+  },
+  {
+    ch: 15, stepName: "Servicing", source: "Kahoot",
+    prompt: "From the in-class Kahoot review.",
+    q: "A form of expansion selling where the salesperson offers better quality products to the customer is…",
+    options: [
+      "Full-line selling",
+      "Cross-selling",
+      "Upselling"
+    ],
+    correct: 2,
+    keyTerm: "Upselling",
+    explain: "<span class='key-term'>Upselling</span> = better-quality version. Full-line = related items to the main purchase. Cross-selling = unrelated products."
+  }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+const STORAGE_KEY = 'mark3337_keyterms_exam_v1';
+let answers = {};
+let submitted = false;
+let reviewFilter = 'all';
+
+const chaptersMeta = [
+  { num: 10, name: 'Approach' },
+  { num: 11, name: 'Need Discovery' },
+  { num: 12, name: 'Presentation' },
+  { num: 13, name: 'Negotiation' },
+  { num: 14, name: 'Close' },
+  { num: 15, name: 'Servicing' }
+];
+
+// ============================================================
+// STORAGE
+// ============================================================
+async function loadState() {
+  try {
+    if (window.storage) {
+      const r = await window.storage.get(STORAGE_KEY);
+      if (r && r.value) {
+        const data = JSON.parse(r.value);
+        answers = data.answers || {};
+        submitted = data.submitted || false;
+      }
+    }
+  } catch (e) { /* fresh */ }
+
+  const answered = Object.keys(answers).length;
+  if (answered > 0 && !submitted) {
+    document.getElementById('resumeNotice').style.display = 'block';
+  }
+  if (submitted && answered === exam.length) {
+    switchView('results');
+    renderResults();
+  }
+}
+
+async function saveState() {
+  try {
+    if (window.storage) {
+      await window.storage.set(STORAGE_KEY, JSON.stringify({ answers, submitted }));
+    }
+  } catch (e) { console.warn('Save failed', e); }
+}
+
+// ============================================================
+// VIEWS
+// ============================================================
+function switchView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function startExam() {
+  answers = {};
+  submitted = false;
+  saveState();
+  renderExam();
+  switchView('exam');
+  updateProgress();
+}
+
+function resumeExam() {
+  renderExam();
+  switchView('exam');
+  updateProgress();
+}
+
+function backToLanding() {
+  switchView('landing');
+}
+
+async function retakeExam() {
+  if (!confirm('Retake the exam? Your current answers will be cleared.')) return;
+  answers = {};
+  submitted = false;
+  await saveState();
+  renderExam();
+  switchView('exam');
+  updateProgress();
+  document.getElementById('resumeNotice').style.display = 'none';
+}
+
+// ============================================================
+// EXAM RENDERING
+// ============================================================
+function renderExam() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = exam.map((q, qi) => {
+    const selected = answers[qi];
+    const hasAnswered = selected !== undefined;
+    return `
+      <div class="question-block ${hasAnswered ? 'answered' : ''}" id="q-${qi}">
+        <div class="q-head">
+          <span class="q-num">Question ${qi + 1}</span>
+          <span class="q-chip">Ch ${q.ch} · ${q.stepName}</span>
+        </div>
+        <div class="q-prompt">${q.prompt}</div>
+        <div class="q-text">${q.q}</div>
+        <div class="options">
+          ${q.options.map((opt, oi) => `
+            <button class="option-btn ${selected === oi ? 'selected' : ''}"
+                    onclick="selectAnswer(${qi}, ${oi})">
+              <span class="option-letter">${String.fromCharCode(65 + oi)}.</span>
+              <span>${opt}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+async function selectAnswer(qi, oi) {
+  answers[qi] = oi;
+  await saveState();
+
+  const block = document.getElementById(`q-${qi}`);
+  if (block) {
+    block.classList.add('answered');
+    block.querySelectorAll('.option-btn').forEach((btn, idx) => {
+      btn.classList.toggle('selected', idx === oi);
+    });
+  }
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = Object.keys(answers).length;
+  document.getElementById('progressAnswered').textContent = answered;
+  const pct = (answered / exam.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+
+  const submitBtn = document.getElementById('submitBtn');
+  const warn = document.getElementById('unansweredWarn');
+  const unanswered = exam.length - answered;
+  if (unanswered > 0) {
+    warn.classList.add('show');
+    warn.textContent = `${unanswered} question${unanswered === 1 ? '' : 's'} still unanswered. Answer all before submitting.`;
+    submitBtn.disabled = true;
+  } else {
+    warn.classList.remove('show');
+    submitBtn.disabled = false;
+  }
+}
+
+// ============================================================
+// SUBMIT & RESULTS
+// ============================================================
+async function submitExam() {
+  if (Object.keys(answers).length !== exam.length) return;
+  if (!confirm('Submit your exam? You can review your answers afterward and retake if you want.')) return;
+
+  submitted = true;
+  await saveState();
+  renderResults();
+  switchView('results');
+}
+
+function renderResults() {
+  const total = exam.length;
+  const correct = exam.reduce((sum, q, qi) => sum + (answers[qi] === q.correct ? 1 : 0), 0);
+  const pct = Math.round((correct / total) * 100);
+
+  document.getElementById('scorePct').textContent = pct;
+  document.getElementById('scoreCorrect').textContent = correct;
+  document.getElementById('scoreTotal').textContent = total;
+
+  let greeting, verdict;
+  if (pct >= 90) {
+    greeting = 'Hey Maheen —';
+    verdict = 'You\'re <em>ready</em>. Crush it.';
+  } else if (pct >= 80) {
+    greeting = 'Hey Maheen —';
+    verdict = 'Strong work. <em>A few more reps</em> on the wrong ones.';
+  } else if (pct >= 70) {
+    greeting = 'Hey Maheen —';
+    verdict = 'Solid foundation. <em>Review the weak chapters</em> and try again.';
+  } else if (pct >= 60) {
+    greeting = 'Hey Maheen —';
+    verdict = 'Getting there. <em>Time for another pass</em> through the study guide.';
+  } else {
+    greeting = 'Hey Maheen —';
+    verdict = 'Take a breath, then <em>back to the study guide</em>. You got this.';
+  }
+  document.getElementById('resultsGreeting').textContent = greeting;
+  document.getElementById('scoreVerdict').innerHTML = verdict;
+
+  const bdContainer = document.getElementById('chapterBreakdown');
+  bdContainer.innerHTML = chaptersMeta.map(ch => {
+    const chQs = exam.map((q, qi) => ({ q, qi })).filter(x => x.q.ch === ch.num);
+    const chCorrect = chQs.reduce((s, x) => s + (answers[x.qi] === x.q.correct ? 1 : 0), 0);
+    const chTotal = chQs.length;
+    const chPct = (chCorrect / chTotal) * 100;
+    let scoreClass = '';
+    if (chPct >= 80) scoreClass = 'score-good';
+    else if (chPct >= 60) scoreClass = 'score-med';
+    else scoreClass = 'score-low';
+    return `
+      <div class="bd-ch ${scoreClass}">
+        <div class="bd-ch-label">Ch ${ch.num}</div>
+        <div class="bd-ch-name">${ch.name}</div>
+        <div class="bd-ch-score">${chCorrect}<span>/${chTotal}</span></div>
+        <div class="bd-ch-mini-bar"><div class="bd-ch-mini-fill" style="width:${chPct}%"></div></div>
+      </div>
+    `;
+  }).join('');
+
+  renderStudyPlan();
+  renderReview();
+}
+
+function renderStudyPlan() {
+  const container = document.getElementById('studyPlanContainer');
+
+  // Compute per-chapter performance with detail
+  const chapterStats = chaptersMeta.map(ch => {
+    const chQs = exam.map((q, qi) => ({ q, qi })).filter(x => x.q.ch === ch.num);
+    const wrongQs = chQs.filter(x => answers[x.qi] !== x.q.correct);
+    const correctCount = chQs.length - wrongQs.length;
+    const pct = chQs.length > 0 ? (correctCount / chQs.length) * 100 : 100;
+    // Collect unique key terms missed
+    const missedTerms = [...new Set(wrongQs.map(x => x.q.keyTerm).filter(Boolean))];
+    return {
+      num: ch.num,
+      name: ch.name,
+      total: chQs.length,
+      correct: correctCount,
+      wrong: wrongQs.length,
+      pct,
+      missedTerms
+    };
+  });
+
+  // Sort by weakest first (lowest pct)
+  const weakChapters = chapterStats
+    .filter(c => c.pct < 80)
+    .sort((a, b) => a.pct - b.pct);
+
+  let focusHTML;
+  if (weakChapters.length === 0) {
+    focusHTML = `
+      <div class="all-clear">
+        <strong>You're solid across every chapter.</strong><br>
+        80%+ in all six. Take another pass to lock it in, then go crush this final.
+      </div>
+    `;
+  } else {
+    focusHTML = `<div class="focus-list">` + weakChapters.map((c, i) => {
+      let priority = 'low';
+      if (c.pct < 50) priority = 'high';
+      else if (c.pct < 70) priority = 'med';
+
+      const termList = c.missedTerms.length > 0
+        ? `<strong>Terms to revisit:</strong> ${c.missedTerms.join(', ')}.`
+        : `Review the chapter overview and key terms.`;
+
+      return `
+        <div class="focus-item priority-${priority}">
+          <div class="focus-rank">${i + 1}</div>
+          <div class="focus-content">
+            <div class="focus-title">Chapter ${c.num} · <em>${c.name}</em></div>
+            <div class="focus-stat">${c.correct} / ${c.total} correct · ${Math.round(c.pct)}%</div>
+            <div class="focus-terms">${termList}</div>
+          </div>
+        </div>
+      `;
+    }).join('') + `</div>`;
+  }
+
+  // Build next-steps based on overall performance
+  const totalCorrect = exam.reduce((s, q, qi) => s + (answers[qi] === q.correct ? 1 : 0), 0);
+  const totalPct = (totalCorrect / exam.length) * 100;
+
+  let nextStepsHTML;
+  if (totalPct >= 90) {
+    nextStepsHTML = `
+      <ol>
+        <li><strong>Skim the chapters</strong> you scored under 100% — even just the key terms list — to lock in the few you missed.</li>
+        <li><strong>Retake this exam in a day or two</strong> to confirm it stuck. If you're 95%+ on a second pass, you're ready.</li>
+        <li><strong>Sleep well</strong> the night before the final. You've earned the confidence.</li>
+      </ol>
+    `;
+  } else if (totalPct >= 75) {
+    nextStepsHTML = `
+      <ol>
+        <li><strong>Hit the weakest chapter first.</strong> Re-read the study guide for that chapter, paying attention to the key terms in your "Terms to revisit" list above.</li>
+        <li><strong>Make flashcards</strong> for the missed terms — physical or digital. Repetition is what makes them stick.</li>
+        <li><strong>Retake this exam</strong> in 1–2 days. Aim for 85%+ on the next attempt.</li>
+        <li><strong>Use the "Wrong only" filter</strong> below to study just the questions you missed.</li>
+      </ol>
+    `;
+  } else {
+    nextStepsHTML = `
+      <ol>
+        <li><strong>Don't panic</strong> — this is exactly what practice exams are for. Use the data above.</li>
+        <li><strong>Start with your weakest chapter</strong> (#1 in the list above). Re-read the study guide thoroughly, not just the key terms.</li>
+        <li><strong>Work through each missed term</strong> — write the definition in your own words. If you can't explain it simply, you don't know it yet.</li>
+        <li><strong>Then move to the next weakest chapter</strong> and repeat. Don't try to study everything at once.</li>
+        <li><strong>Retake this exam</strong> after each chapter you re-study. You'll see the score climb.</li>
+      </ol>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="study-plan">
+      <div class="study-plan-label">Your Personalized Study Plan</div>
+      <h3>Where to <em>focus</em> next.</h3>
+      <p class="study-plan-intro">
+        ${weakChapters.length === 0
+          ? "Nothing urgent — but here's how to lock it in before the final."
+          : `These are the chapters that need the most attention before the final, ranked from weakest to strongest. Don't try to study everything — focus here first.`}
+      </p>
+
+      ${focusHTML}
+
+      <div class="next-steps">
+        <div class="next-steps-label">Next Steps</div>
+        ${nextStepsHTML}
+      </div>
+    </div>
+  `;
+}
+
+function filterReview(f) {
+  reviewFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.filter === f);
+  });
+  renderReview();
+}
+
+function renderReview() {
+  const container = document.getElementById('reviewContainer');
+  const items = exam.map((q, qi) => ({ q, qi })).filter(({ q, qi }) => {
+    const gotCorrect = answers[qi] === q.correct;
+    if (reviewFilter === 'correct') return gotCorrect;
+    if (reviewFilter === 'wrong') return !gotCorrect;
+    return true;
+  });
+
+  if (items.length === 0) {
+    container.innerHTML = `<div style="text-align:center;padding:40px;color:var(--ink-soft);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;">No questions in this filter.</div>`;
+    return;
+  }
+
+  container.innerHTML = items.map(({ q, qi }) => {
+    const selected = answers[qi];
+    const gotCorrect = selected === q.correct;
+    const blockCls = gotCorrect ? 'review-correct' : 'review-wrong';
+    return `
+      <div class="question-block ${blockCls}">
+        <div class="q-head">
+          <span class="q-num">Question ${qi + 1}</span>
+          <span class="q-chip">Ch ${q.ch} · ${q.stepName}</span>
+        </div>
+        <div class="q-prompt">${q.prompt}</div>
+        <div class="q-text">${q.q}</div>
+        <div class="options">
+          ${q.options.map((opt, oi) => {
+            let cls = '';
+            if (oi === q.correct) cls = 'review-correct';
+            else if (oi === selected) cls = 'review-wrong';
+            return `
+              <button class="option-btn ${cls}" disabled>
+                <span class="option-letter">${String.fromCharCode(65 + oi)}.</span>
+                <span>${opt}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+        <div class="term-reveal show">
+          <strong>${gotCorrect ? 'Correct.' : 'Correct answer: ' + String.fromCharCode(65 + q.correct) + ' — ' + q.options[q.correct] + '.'}</strong> ${q.explain}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+(async () => {
+  await loadState();
+})();
+</script>
+</body>
+</html>
